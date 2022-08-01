@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "liquifiedhoney:block/honey_fluid_block"
+    }
+  }
+}

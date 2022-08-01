@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[${fmlVersion},)"
+license="https://raw.githubusercontent.com/Resourceful-Bees/LiquifiedHoney/master/LICENSE"
+issueTrackerURL="https://github.com/Resourceful-Bees/LiquifiedHoney/issues/new/choose"
+
+[[mods]]
+    modId="liquifiedhoney"
+    version="${version}"
+    displayName="Resourceful Bees"
+    displayURL="https://www.curseforge.com/minecraft/mc-mods/resourceful-bees"
+    logoFile="logo.png"
+    authors="Epic_Oreo, ThatGravyBoat"
+    description="This mod turns honey blocks into liquid honey with heat."
+
+[[dependencies.liquifiedhoney]]
+    modId="forge"
+    mandatory=true
+    versionRange="[${forgeVersion},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.liquifiedhoney]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[${mcVersion},)"
+    ordering="NONE"
+    side="BOTH"

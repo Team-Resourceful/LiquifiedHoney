@@ -1,0 +1,6 @@
+{
+  "render_type": "translucent",
+  "textures": {
+    "particle": "liquifiedhoney:block/honey/honey_still"
+  }
+}

@@ -1,0 +1,58 @@
+def ENV = System.getenv()
+def releasesRepoUrl = "https://nexus.resourcefulbees.com/repository/maven-releases/"
+def snapshotsRepoUrl = "https://nexus.resourcefulbees.com/repository/maven-snapshots/"
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Liquified Honey'
+                description = 'A mod for minecraft that turns honey blocks into liquid honey with heat.'
+                url = 'https://github.com/Resourceful-Bees/LiquifiedHoney'
+
+                scm {
+                    connection = 'git:https://github.com/Resourceful-Bees/LiquifiedHoney.git'
+                    developerConnection = 'git:https://github.com/Resourceful-Bees/LiquifiedHoney.git'
+                    url = 'https://github.com/Resourceful-Bees/LiquifiedHoney/'
+                }
+
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = 'https://raw.githubusercontent.com/Resourceful-Bees/LiquifiedHoney/master/LICENSE'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'epic428'
+                        name = 'Epic_Oreo'
+                        roles = ['Developer']
+                        email = 'admin@resourcefulbees.com'
+                    }
+                    developer {
+                        id = 'thatgravyboat'
+                        name = 'ThatGravyBoat'
+                        roles = ['Developer']
+                        email = 'admin@resourcefulbees.com'
+                    }
+                }
+            }
+
+        }
+    }
+
+    repositories {
+        maven {
+            url = rootProject.version.endsWith("-SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username ENV.MAVEN_USER
+                password ENV.MAVEN_PASS
+            }
+        }
+    }
+}
