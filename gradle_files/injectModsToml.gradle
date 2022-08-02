@@ -14,4 +14,3 @@ def injectModsToml = { ProcessResources process ->
 }
 
 processResources(injectModsToml)
-processDatagenResources(injectModsToml)

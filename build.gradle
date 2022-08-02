@@ -20,26 +20,6 @@ group = "com.teamresourceful" // http://maven.apache.org/guides/mini/guide-namin
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 evaluationDependsOnChildren()
 
-sourceSets {
-    main {
-        java.excludes = ['com/teamresourceful/liquifiedhoney/datagen/**']
-        resources {
-            srcDirs += 'src/generated/resources'
-            exclude '.cache'
-        }
-    }
-    datagen {
-        resources.srcDirs = main.resources.srcDirs
-        resources.srcDirs.remove('src/generated/resources')
-        java.srcDirs = main.java.srcDirs
-        compileClasspath += main.compileClasspath
-        runtimeClasspath += main.runtimeClasspath
-        compileClasspath += main.output
-        runtimeClasspath += main.output
-    }
-}
-
-
 plugins.withId("idea") {
     sourceSets.main.output.resourcesDir("out/production/resources")
 }
@@ -80,18 +60,6 @@ minecraft {
                 }
             }
         }
-
-        data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.console.level', 'debug'
-            args "--mod", "liquifiedhoney", "--all", "--output", "\"" + file("src/generated/resources").toString() + "\"", "--validate", "--existing", "\"" + sourceSets.main.resources.srcDirs[0] + "\""
-            mods {
-                liquifiedhoney {
-                    source sourceSets.datagen
-                }
-            }
-        }
     }
 }
 
@@ -104,6 +72,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-$mc_version-forge-api:$jei_version")
     implementation fg.deobf("mezz.jei:jei-$mc_version-forge:$jei_version")
     implementation fg.deobf("com.telepathicgrunt:Bumblezone-Forge:$bumblezone_version")
+    //implementation fg.deobf("com.teamresourceful.resourcefulbees")
 
     compileOnly 'org.jetbrains:annotations:23.0.0'
     annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
