@@ -7,7 +7,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 public final class ClientEventHandlers {
 
-    //TODO some methods here get called from distRunWhenOn's and could probably be merged into the FMLClientSetupEvent instead
     private ClientEventHandlers() {
         throw new IllegalStateException(ModConstants.UTILITY_CLASS);
     }
